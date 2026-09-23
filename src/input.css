@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+.marquee-track {
+  animation: marquee-scroll 22s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
