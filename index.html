@@ -34,30 +34,37 @@
 
 <!-- Header -->
 <header id="site-header" class="sticky top-8 z-40 bg-transparent transition-colors duration-300">
-  <div class="max-w-page mx-auto px-6 h-[60px] flex items-center justify-between">
-    <nav class="hidden lg:flex items-center gap-7 text-[15px] text-white/90">
-      <a href="#about" class="hover:text-vivid-lime transition-colors">Our Farm</a>
-      <a href="#products" class="hover:text-vivid-lime transition-colors">Products</a>
-      <a href="#values" class="hover:text-vivid-lime transition-colors">Our Practice</a>
-      <a href="#partners" class="hover:text-vivid-lime transition-colors">Partners</a>
-      <a href="#tours" class="hover:text-vivid-lime transition-colors">Farm Tours</a>
+  <div class="max-w-[1600px] mx-auto px-8 sm:px-12 lg:px-16 h-[76px] relative flex items-center justify-between">
+    
+    <!-- Left Navigation Items -->
+    <nav class="hidden lg:flex items-center gap-8 xl:gap-10 text-[15px] xl:text-[16px] font-medium text-white/90">
+      <a href="#products" class="hover:text-vivid-lime transition-colors tracking-wide">Products</a>
+      <a href="#values" class="hover:text-vivid-lime transition-colors tracking-wide">Our Practice</a>
+      <a href="#partners" class="hover:text-vivid-lime transition-colors tracking-wide">Partners</a>
+      <a href="#tours" class="hover:text-vivid-lime transition-colors tracking-wide">Farm Tours</a>
     </nav>
 
-    <a href="#" class="flex items-center gap-2 text-white mx-auto lg:mx-0">
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+    <!-- Perfectly Centered Brand Logo -->
+    <a href="#" class="absolute left-1/2 -translate-x-1/2 flex items-center gap-2.5 text-white select-none group">
+      <svg width="28" height="28" viewBox="0 0 26 26" fill="none" class="group-hover:rotate-12 transition-transform">
         <path d="M13 2C13 2 6 8 6 15C6 19.4183 9.13401 23 13 23C16.866 23 20 19.4183 20 15C20 8 13 2 13 2Z" fill="#e8fe85"/>
       </svg>
-      <span class="font-reckless text-[22px] tracking-tight leading-none">paringa park view</span>
+      <span class="font-reckless text-[24px] sm:text-[27px] tracking-tight leading-none">paringa park view</span>
     </a>
 
-    <div class="flex items-center gap-4">
-      <a href="#contact" class="hidden sm:inline-flex items-center bg-white text-charcoal text-[14px] font-medium rounded-nav-pills px-5 py-[10px] hover:bg-vivid-lime transition-colors">
+    <!-- Right Side: About Us + CTA Button -->
+    <div class="flex items-center gap-6 sm:gap-8 ml-auto lg:ml-0">
+      <a href="#about" class="hidden md:inline-block text-[15px] xl:text-[16px] font-medium text-white/90 hover:text-vivid-lime transition-colors tracking-wide">
+        About Us
+      </a>
+      <a href="#contact" class="inline-flex items-center bg-white text-charcoal text-[14px] xl:text-[15px] font-semibold rounded-full px-6 py-2.5 sm:py-3 hover:bg-vivid-lime transition-all transform active:scale-95 shadow-md">
         Get In Touch
       </a>
-      <button class="lg:hidden text-white" aria-label="Menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <button class="lg:hidden text-white ml-2 p-1" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
+
   </div>
 </header>
 
