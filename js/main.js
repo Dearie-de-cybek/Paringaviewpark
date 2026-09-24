@@ -105,3 +105,20 @@
   });
   draw(full, null);
 })();
+
+(function () {
+  var carousel = document.getElementById("partner-carousel");
+  var prev = document.getElementById("partner-prev");
+  var next = document.getElementById("partner-next");
+  if (!carousel || !prev || !next) return;
+
+  function scrollByStep(dir) {
+    var card = carousel.querySelector(".snap-center");
+    var step = card ? card.offsetWidth + 24 : 400;
+    carousel.scrollBy({ left: dir * step, behavior: "smooth" });
+  }
+
+  prev.addEventListener("click", function () { scrollByStep(-1); });
+  next.addEventListener("click", function () { scrollByStep(1); });
+})();
+
