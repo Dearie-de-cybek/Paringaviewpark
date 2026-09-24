@@ -41,3 +41,67 @@
     }, { margin: "-10% 0px -10% 0px" });
   });
 })();
+
+(function () {
+  var svg = document.getElementById("au-map");
+  var tags = document.querySelectorAll(".town-tag");
+  if (!svg || !tags.length) return;
+  var full = svg.dataset.vb.split(" ").map(Number);
+  var ratio = full[3] / full[2];
+  var cur = full.slice();
+  var marker = document.getElementById("au-marker");
+  var ring = document.getElementById("au-ring");
+  var pin = document.getElementById("au-pin");
+  var label = document.getElementById("au-label");
+  var dots = svg.querySelectorAll(".town-dot");
+  var raf, active = null;
+
+  function draw(vb, town) {
+    svg.setAttribute("viewBox", vb.join(" "));
+    var w = vb[2];
+    var zoomed = w < full[2] * 0.5;
+    dots.forEach(function (d) { d.setAttribute("r", w / 120); d.style.opacity = zoomed ? 0.35 : 0; });
+    if (town) {
+      marker.setAttribute("opacity", 1);
+      ring.setAttribute("cx", town.x); ring.setAttribute("cy", town.y); ring.setAttribute("r", w / 28);
+      pin.setAttribute("cx", town.x); pin.setAttribute("cy", town.y); pin.setAttribute("r", w / 75);
+      label.textContent = town.name;
+      label.setAttribute("x", town.x + w / 45); label.setAttribute("y", town.y - w / 45);
+      label.setAttribute("font-size", w / 26);
+    } else {
+      marker.setAttribute("opacity", 0);
+    }
+  }
+
+  function go(target, town) {
+    cancelAnimationFrame(raf);
+    var from = cur.slice(), t0 = performance.now(), dur = 800;
+    (function step(now) {
+      var p = Math.min((now - t0) / dur, 1);
+      var e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      cur = from.map(function (v, i) { return v + (target[i] - v) * e; });
+      draw(cur, town);
+      if (p < 1) raf = requestAnimationFrame(step);
+    })(t0);
+  }
+
+  function select(btn) {
+    tags.forEach(function (b) {
+      var on = b === btn;
+      b.classList.toggle("bg-forest-ink", on);
+      b.classList.toggle("text-white", on);
+      b.classList.toggle("bg-ash-gray", !on);
+      b.classList.toggle("text-graphite", !on);
+      b.setAttribute("aria-pressed", on);
+    });
+    if (!btn) { active = null; go(full, null); return; }
+    active = btn;
+    var x = parseFloat(btn.dataset.x), y = parseFloat(btn.dataset.y), w = 130;
+    go([x - w / 2, y - (w * ratio) / 2, w, w * ratio], { x: x, y: y, name: btn.dataset.town });
+  }
+
+  tags.forEach(function (b) {
+    b.addEventListener("click", function () { select(active === b ? null : b); });
+  });
+  draw(full, null);
+})();
