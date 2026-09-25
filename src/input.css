@@ -27,3 +27,5 @@ html {
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 .spin-slow { animation: spin-slow 22s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .spin-slow { animation: none; } }
+
+.photo-strip { animation-duration: 45s; }
