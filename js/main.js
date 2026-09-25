@@ -1,21 +1,32 @@
 (function () {
   var header = document.getElementById("site-header");
-  if (header) {
-    var inner = header.querySelector(".header-inner");
-    var onScroll = function () {
-      if (window.scrollY > 20) {
-        header.classList.remove("bg-transparent");
-        header.classList.add("bg-forest-ink");
-        inner && inner.classList.remove("translate-y-9");
-      } else {
-        header.classList.remove("bg-forest-ink");
-        header.classList.add("bg-transparent");
-        inner && inner.classList.add("translate-y-9");
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+  if (!header) return;
+  var inner = header.querySelector(".header-inner");
+  var btn = document.getElementById("menu-btn");
+  var menu = document.getElementById("mobile-menu");
+  var open = false;
+  function apply() {
+    var solid = window.scrollY > 20 || open;
+    header.classList.toggle("bg-forest-ink", solid);
+    header.classList.toggle("bg-transparent", !solid);
+    if (inner) inner.classList.toggle("translate-y-9", !solid);
   }
+  function setOpen(v) {
+    open = v;
+    menu.classList.toggle("hidden", !v);
+    document.getElementById("menu-icon-open").classList.toggle("hidden", v);
+    document.getElementById("menu-icon-close").classList.toggle("hidden", !v);
+    btn.setAttribute("aria-expanded", v);
+    btn.setAttribute("aria-label", v ? "Close menu" : "Open menu");
+    apply();
+  }
+  if (btn && menu) {
+    btn.addEventListener("click", function () { setOpen(!open); });
+    menu.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setOpen(false); }); });
+    window.addEventListener("resize", function () { if (window.innerWidth >= 1024 && open) setOpen(false); });
+  }
+  window.addEventListener("scroll", apply, { passive: true });
+  apply();
 })();
 
 (function () {
@@ -93,7 +104,8 @@
       var on = b === btn;
       b.classList.toggle("bg-forest-ink", on);
       b.classList.toggle("text-white", on);
-      b.classList.toggle("bg-ash-gray", !on);
+      b.classList.toggle("bg-white", !on);
+      b.classList.toggle("hover:bg-moss", !on);
       b.classList.toggle("text-graphite", !on);
       b.setAttribute("aria-pressed", on);
     });

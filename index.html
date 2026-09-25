@@ -45,9 +45,8 @@
     </nav>
 
     <!-- Perfectly Centered Brand Logo -->
-    <a href="#" class="absolute left-1/2 -translate-x-1/2 flex items-center gap-3 text-white select-none group">
-      <img src="assets/img/logo.jpg" alt="Paringa Park View Logo" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover shadow-md group-hover:scale-105 transition-transform ring-2 ring-white/40">
-      <span class="font-reckless text-[24px] sm:text-[27px] tracking-tight leading-none">paringa park view</span>
+    <a href="#" aria-label="Paringa Park View home" class="absolute left-8 sm:left-12 lg:left-1/2 lg:-translate-x-1/2 flex items-center select-none group">
+      <img src="assets/img/logo.jpg" alt="Paringa Park View" class="h-14 sm:h-16 w-auto object-contain rounded-xl shadow-lg ring-2 ring-white/20 group-hover:scale-105 transition-all">
     </a>
 
     <!-- Right Side: About Us + CTA Button -->
@@ -58,11 +57,22 @@
       <a href="#contact" class="inline-flex items-center bg-white text-charcoal text-[14px] xl:text-[15px] font-semibold rounded-full px-6 py-2.5 sm:py-3 hover:bg-vivid-lime transition-all transform active:scale-95 shadow-md">
         Get In Touch
       </a>
-      <button class="lg:hidden text-white ml-2 p-1" aria-label="Menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <button id="menu-btn" class="lg:hidden text-white ml-2 p-1" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="menu-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg id="menu-icon-close" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
       </button>
     </div>
 
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden absolute top-full inset-x-0 bg-forest-ink rounded-b-[28px] shadow-lg px-8 sm:px-12 pb-8 pt-2">
+    <nav class="flex flex-col text-white text-[20px] font-reckless">
+      <a href="#products" class="py-4 border-b border-white/15">Products</a>
+      <a href="#values" class="py-4 border-b border-white/15">Our Practice</a>
+      <a href="#partners" class="py-4 border-b border-white/15">Partners</a>
+      <a href="#tours" class="py-4 border-b border-white/15">Farm Tours</a>
+      <a href="#about" class="py-4 border-b border-white/15">About Us</a>
+    </nav>
+    <a href="#contact" class="mt-6 inline-flex items-center bg-vivid-lime text-charcoal text-[15px] font-semibold rounded-full px-7 py-3">Get In Touch</a>
   </div>
 </header>
 
@@ -77,11 +87,12 @@
     poster="https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=2400&auto=format&fit=crop">
     <source src="assets/video/hero.mp4" type="video/mp4">
   </video>
-  <div class="absolute inset-0 bg-gradient-to-b from-charcoal/50 via-charcoal/10 to-transparent"></div>
+  <div class="absolute inset-0 bg-charcoal/30"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-transparent to-charcoal/20"></div>
 
-  <div data-animate="hero" class="relative z-10 px-6 flex flex-col items-center">
-    <p class="text-white/90 text-[13px] tracking-[0.15em] uppercase mb-4">Fleurieu Peninsula · South Australia</p>
-    <h1 class="font-reckless font-light text-white text-[42px] sm:text-[57px] leading-[1.06] tracking-heading-tight max-w-[16ch]">
+  <div data-animate="hero" class="relative z-10 px-5 sm:px-6 w-full flex flex-col items-center">
+    <p class="text-white/90 text-[13px] sm:text-[14px] tracking-[0.15em] uppercase mb-4">Fleurieu Peninsula · South Australia</p>
+    <h1 class="font-reckless font-light text-white text-[50px] sm:text-[64px] lg:text-[72px] leading-[1.05] tracking-heading-tight max-w-[15ch] sm:max-w-[22ch] lg:max-w-[26ch] [text-shadow:0_2px_24px_rgba(0,0,0,0.25)]">
       Milk drawn slow, from a park we've grazed since 2015
     </h1>
     <div class="mt-8 flex flex-col sm:flex-row items-center gap-4">
@@ -633,16 +644,16 @@
 
           <!-- Disclaimers & Checkbox -->
           <p class="mt-5 text-[12px] text-white/70 leading-relaxed">
-            By submitting this form, you agree to receive marketing communications from Arva. You can unsubscribe at any time.
+            By submitting this form, you agree to receive marketing communications from Paringa Park View. You can unsubscribe at any time.
           </p>
 
           <label class="mt-4 flex items-start gap-2.5 cursor-pointer select-none">
             <input type="checkbox" required class="mt-0.5 accent-[#e8fe85] w-4 h-4 rounded border-white/40 bg-transparent shrink-0">
-            <span class="text-[12.5px] text-white/90">I agree to receive emails from Arva.*</span>
+            <span class="text-[12.5px] text-white/90">I agree to receive emails from Paringa Park View.*</span>
           </label>
 
           <p class="mt-2 text-[11.5px] text-white/50">
-            Arva stores your information to best respond to your request.
+            Paringa Park View stores your information to best respond to your request.
           </p>
 
           <!-- Submit Button -->
@@ -711,7 +722,7 @@
         </p>
       </div>
 
-      <!-- Follow Us & Brandmark Glyph -->
+      <!-- Follow Us & Logo -->
       <div data-animate="fade-up" data-delay="0.15" class="flex flex-col justify-between items-start lg:items-end">
         <div>
           <h4 class="text-[12px] font-bold tracking-[0.15em] text-white/70 uppercase mb-3">Follow Us</h4>
@@ -734,12 +745,9 @@
           </div>
         </div>
 
-        <!-- Geometric Brand Glyph Icon -->
+        <!-- Official Logo Emblem below social icons -->
         <div class="mt-8 lg:mt-6">
-          <svg class="w-14 h-14" viewBox="0 0 60 60" fill="none">
-            <path d="M30 4L54 52H38L30 36L22 52H6L30 4Z" fill="#ffffff"/>
-            <path d="M22 52L30 36L18 52H22Z" fill="#e8fe85"/>
-          </svg>
+          <img src="assets/img/logo.jpg" alt="Paringa Park View" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-2xl ring-2 ring-white/25 hover:scale-105 transition-all">
         </div>
       </div>
 
