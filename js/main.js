@@ -1,13 +1,16 @@
 (function () {
   var header = document.getElementById("site-header");
   if (header) {
+    var inner = header.querySelector(".header-inner");
     var onScroll = function () {
       if (window.scrollY > 20) {
         header.classList.remove("bg-transparent");
         header.classList.add("bg-forest-ink");
+        inner && inner.classList.remove("translate-y-9");
       } else {
         header.classList.remove("bg-forest-ink");
         header.classList.add("bg-transparent");
+        inner && inner.classList.add("translate-y-9");
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -122,3 +125,33 @@
   next.addEventListener("click", function () { scrollByStep(1); });
 })();
 
+
+(function () {
+  var wrap = document.getElementById("journey");
+  if (!wrap || !window.Motion) return;
+  var m = window.Motion;
+  var steps = wrap.querySelectorAll(".journey-step");
+  steps.forEach(function (el) { el.style.opacity = 0; });
+  m.inView(wrap, function () {
+    m.animate("#journey-line", { transform: ["scaleX(0)", "scaleX(1)"] }, { duration: 1.4, easing: "ease-in-out" });
+    steps.forEach(function (el, i) {
+      m.animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.6, delay: 0.3 + i * 0.35, easing: "ease-out" });
+    });
+  }, { margin: "0px 0px -20% 0px" });
+})();
+
+(function () {
+  var els = document.querySelectorAll("[data-parallax]");
+  if (!els.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var ticking = false;
+  function update() {
+    els.forEach(function (el) {
+      var r = el.parentElement.getBoundingClientRect();
+      var off = (r.top + r.height / 2 - window.innerHeight / 2) * parseFloat(el.dataset.parallax);
+      el.style.transform = "translateY(" + off.toFixed(1) + "px)";
+    });
+    ticking = false;
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
