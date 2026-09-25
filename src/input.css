@@ -29,3 +29,7 @@ html {
 @media (prefers-reduced-motion: reduce) { .spin-slow { animation: none; } }
 
 .photo-strip { animation-duration: 45s; }
+
+.field { width: 100%; background: #fff; border: 1px solid #c3cda7; border-radius: 33px; padding: 12px 22px; font-size: 16px; color: #212529; }
+.field::placeholder { color: #6d6d6d; }
+.field:focus { outline: none; box-shadow: 0 0 0 2px #07503f; }

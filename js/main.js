@@ -6,7 +6,7 @@
   var menu = document.getElementById("mobile-menu");
   var open = false;
   function apply() {
-    var solid = window.scrollY > 20 || open;
+    var solid = window.scrollY > 20 || open || header.hasAttribute("data-solid");
     header.classList.toggle("bg-forest-ink", solid);
     header.classList.toggle("bg-transparent", !solid);
     if (inner) inner.classList.toggle("translate-y-9", !solid);
